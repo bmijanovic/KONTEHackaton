@@ -1,1 +1,2 @@
 # KONTEHackaton
+API for KONTEHackaton
