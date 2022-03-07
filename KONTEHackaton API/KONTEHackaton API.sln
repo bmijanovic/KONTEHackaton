@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31919.166
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KONTEHackaton API", "KONTEHackaton API\KONTEHackaton API.csproj", "{06A68452-6CFA-47EA-8276-0C8BA718E1A3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KONTEHackaton API", "KONTEHackaton API\KONTEHackaton API.csproj", "{06A68452-6CFA-47EA-8276-0C8BA718E1A3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KONTEHackaton.Data", "KONTEHackaton.Data\KONTEHackaton.Data.csproj", "{B0AB8986-85A7-4624-BCD7-7717E9F6A5E9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KONTEHackaton.Data", "KONTEHackaton.Data\KONTEHackaton.Data.csproj", "{B0AB8986-85A7-4624-BCD7-7717E9F6A5E9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KONTEHackaton.Repositories", "KONTEHackaton.Repositories\KONTEHackaton.Repositories.csproj", "{E332D152-0679-4E34-87BA-A289626D16F4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{B0AB8986-85A7-4624-BCD7-7717E9F6A5E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B0AB8986-85A7-4624-BCD7-7717E9F6A5E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B0AB8986-85A7-4624-BCD7-7717E9F6A5E9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E332D152-0679-4E34-87BA-A289626D16F4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E332D152-0679-4E34-87BA-A289626D16F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E332D152-0679-4E34-87BA-A289626D16F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E332D152-0679-4E34-87BA-A289626D16F4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
