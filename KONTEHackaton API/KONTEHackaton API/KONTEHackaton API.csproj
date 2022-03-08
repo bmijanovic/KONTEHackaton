@@ -15,6 +15,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\KONTEHackaton.Data\KONTEHackaton.Data.csproj" />
+    <ProjectReference Include="..\KONTEHackaton.Domain\KONTEHackaton.Domain.csproj" />
     <ProjectReference Include="..\KONTEHackaton.Repositories\KONTEHackaton.Repositories.csproj" />
   </ItemGroup>
 

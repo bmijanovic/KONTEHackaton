@@ -39,7 +39,7 @@ namespace KONTEHackaton.Domain.Services
                 model = new DeskDomainModel();
                 model.Id = item.Id;
                 model.Order = item.Order;
-                model.Available = item.Available;
+                model.isAvailable = item.isAvailable;
                 result.Add(model);
             }
             return result;
@@ -53,7 +53,7 @@ namespace KONTEHackaton.Domain.Services
             DeskDomainModel result = new DeskDomainModel();
             result.Id = data.Id;
             result.Order = data.Order;
-            result.Available = data.Available;
+            result.isAvailable = data.isAvailable;
             return result;
         }
     }

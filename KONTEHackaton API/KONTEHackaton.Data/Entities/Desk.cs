@@ -18,7 +18,7 @@ namespace KONTEHackaton.Data.Entities
         public int Order { get; set; }
 
         [Column("available")]
-        public int Available { get; set; }
+        public bool isAvailable { get; set; }
 
         public Room Room { get; set; }
 

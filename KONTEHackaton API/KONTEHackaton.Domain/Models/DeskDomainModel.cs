@@ -10,7 +10,7 @@ namespace KONTEHackaton.Domain.Models
     {
         public Guid Id { get; set; }
         
-        public int Available { get; set; }
+        public bool isAvailable { get; set; }
         public Guid RoomId { get; set; }
 
         public int Order { get; set; }
