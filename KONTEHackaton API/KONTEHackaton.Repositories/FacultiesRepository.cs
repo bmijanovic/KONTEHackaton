@@ -9,13 +9,13 @@ using Microsoft.EntityFrameworkCore;
 
 namespace KONTEHackaton.Repositories
 {
-    public interface IFacultyRepository: IRepository<Faculty>
+    public interface IFacultyRepository : IRepository<Faculty>
     {
 
     }
 
     public class FacultiesRepository : IFacultyRepository
-    {
+{
         private FacultyContext _facultyContext;
 
         public FacultiesRepository(FacultyContext facultyRepository)

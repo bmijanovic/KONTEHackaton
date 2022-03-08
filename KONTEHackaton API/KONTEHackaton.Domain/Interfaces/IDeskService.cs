@@ -11,5 +11,6 @@ namespace KONTEHackaton.Domain.Interfaces
     {
         DeskDomainModel Delete(Guid id);
         DeskDomainModel Add(DeskDomainModel model);
+
     }
 }

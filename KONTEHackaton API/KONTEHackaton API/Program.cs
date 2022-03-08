@@ -1,4 +1,6 @@
 using KONTEHackaton.Data.Context;
+using KONTEHackaton.Domain.Services;
+using KONTEHackaton.Domain.Interfaces;
 using KONTEHackaton.Repositories;
 using Microsoft.EntityFrameworkCore;
 
@@ -14,7 +16,22 @@ builder.Services.AddSwaggerGen();
 var connectionString = builder.Configuration.GetConnectionString("FacultyConnection");
 builder.Services.AddDbContext<FacultyContext>(x => x.UseSqlServer(connectionString));
 
+
 builder.Services.AddTransient<IFacultyRepository, FacultiesRepository>();
+builder.Services.AddTransient<IRoomsRepository, RoomsRepository>();
+builder.Services.AddTransient<IDesksRepository, DeskRepository>();
+
+builder.Services.AddTransient<IFacultyService, FacultyService>();
+builder.Services.AddTransient<IRoomService, RoomService>();
+builder.Services.AddTransient<IDeskService, DeskService>();
+
+//builder.Services.AddCors(options => {
+//    options.AddPolicy("CorsPolicy",
+//        corsBuilder => corsBuilder.WithOrigins("http://localhost:3000")
+//            .AllowAnyMethod()
+//            .AllowAnyHeader()
+//            .AllowCredentials());
+//});
 
 var app = builder.Build();
 
