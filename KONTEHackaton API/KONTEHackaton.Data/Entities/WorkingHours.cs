@@ -11,13 +11,15 @@ namespace KONTEHackaton.Data.Entities
     public class WorkingHours
     {
         [Column("id")]
-        public Guid Id { get; set; }
+        public int Id { get; set; }
 
         [Column("opens")]
-        public TimeOnly Opens { get; set; }
+        public DateTime Opens { get; set; }
 
         [Column("closes")]
-        public TimeOnly Closes { get; set; }
+        public DateTime Closes { get; set; }
+
+        public ICollection<Faculty> Faculties { get; set; }
 
     }
 }

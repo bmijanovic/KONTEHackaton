@@ -13,6 +13,7 @@ namespace KONTEHackaton.Repositories
     public interface IDesksRepository : IRepository<Desk>
     {
         Desk Delete(Guid id);
+        Desk Post(Desk entity);
     }
 
     public class DeskRepository : IDesksRepository
@@ -47,6 +48,10 @@ namespace KONTEHackaton.Repositories
             return data;
         }
 
-
+        public Desk Post(Desk entity)
+        {
+            var result = _facultyContext.Desks.Add(entity);
+            return result.Entity;
+        }
     }
 }
