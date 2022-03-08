@@ -17,7 +17,10 @@ namespace KONTEHackaton.Data.Entities
         [Column("name")]
         public string Name { get; set; }
 
-        public WorkingHours workingHours { get; set; }
+        public WorkingHours WorkingHours { get; set; }
+
+        [Column("working-hours")]
+        public int WorkingHoursId { get; set; }
 
         public virtual ICollection<Room> Rooms { get; set; }
 
