@@ -40,6 +40,16 @@ namespace KONTEHackaton.Domain.Services
                     roomModel.Id = room.Id;
                     roomModel.Name = room.Name;
                     roomModel.FacultyID = room.FacultyId;
+                    roomModel.DesksList = new List<DeskDomainModel>();
+                    foreach (Desk desk in room.Desks)
+                    {
+                        DeskDomainModel modelDesk = new DeskDomainModel();
+                        modelDesk.Id = desk.Id;
+                        modelDesk.RoomId = desk.RoomId;
+                        modelDesk.isAvailable = desk.isAvailable;
+                        modelDesk.Order = desk.Order;
+                        roomModel.DesksList.Add(modelDesk);
+                    }
                     model.RoomsList.Add(roomModel);
                 }
                 result.Add(model);
@@ -66,6 +76,17 @@ namespace KONTEHackaton.Domain.Services
                 roomModel.Id = room.Id;
                 roomModel.Name = room.Name;
                 roomModel.FacultyID = room.FacultyId;
+                List<DeskDomainModel> listOfDesks = new List<DeskDomainModel>();
+                foreach (Desk desk in room.Desks)
+                {
+                    DeskDomainModel modelDesk = new DeskDomainModel();
+                    modelDesk.Id = desk.Id;
+                    modelDesk.RoomId = desk.RoomId;
+                    modelDesk.isAvailable = desk.isAvailable;
+                    modelDesk.Order = desk.Order;
+                    listOfDesks.Add(modelDesk);
+                }
+                roomModel.DesksList = listOfDesks;
                 result.RoomsList.Add(roomModel);
             }
             return result;
