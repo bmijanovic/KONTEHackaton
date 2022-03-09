@@ -25,12 +25,12 @@ namespace KONTEHackaton.Repositories
 
         public async Task<IEnumerable<Faculty>> GetAll()
         {
-            return await _facultyContext.Faculties.ToListAsync();
+            return await _facultyContext.Faculties.Include(x => x.WorkingHours).Include(x => x.Rooms).ThenInclude(x => x.Desks).ToListAsync();
         }
 
         public async Task<Faculty> GetById(Guid id)
         {
-            var data = await _facultyContext.Faculties.FindAsync(id);
+            var data = await _facultyContext.Faculties.Include(x => x.Rooms).Include(x => x.WorkingHours).SingleOrDefaultAsync(x => x.Id == id);
             return data;
         }
 

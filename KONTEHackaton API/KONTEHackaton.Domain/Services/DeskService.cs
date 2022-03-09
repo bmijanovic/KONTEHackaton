@@ -1,4 +1,5 @@
-﻿using KONTEHackaton.Domain.Interfaces;
+﻿using KONTEHackaton.Data.Entities;
+using KONTEHackaton.Domain.Interfaces;
 using KONTEHackaton.Domain.Models;
 using KONTEHackaton.Repositories;
 using System;
@@ -17,14 +18,38 @@ namespace KONTEHackaton.Domain.Services
         {
             _desksRepository = desksRepository;
         }
-        public DeskDomainModel Add(DeskDomainModel model)
+        public DeskDomainModel Add(Guid roomId)
         {
-            throw new NotImplementedException();
+            Desk desk = new Desk();
+            desk.Id = new Guid();
+            desk.isAvailable = true;
+            desk.RoomId = roomId;
+            desk.Order = _desksRepository.GetNumOfTablesForRoom(roomId);
+
+            Desk insertedDesk = _desksRepository.Post(desk);
+            _desksRepository.Save();
+
+            DeskDomainModel deskDomainModel = new DeskDomainModel();
+            deskDomainModel.Id = insertedDesk.Id;
+            deskDomainModel.RoomId = insertedDesk.RoomId;
+            deskDomainModel.isAvailable = insertedDesk.isAvailable;
+            deskDomainModel.Order = insertedDesk.Order;
+            return deskDomainModel;
+            
         }
 
         public DeskDomainModel Delete(Guid id)
         {
-            throw new NotImplementedException();
+            var deletedDesk = _desksRepository.Delete(id);
+            _desksRepository.Save();
+
+            DeskDomainModel deletedDomainModel = new DeskDomainModel();
+            deletedDomainModel.Id = deletedDesk.Id;
+            deletedDomainModel.RoomId = deletedDesk.RoomId;
+            deletedDomainModel.isAvailable= deletedDesk.isAvailable;
+            deletedDomainModel.Order = deletedDesk.Order;  
+
+            return deletedDomainModel;
         }
 
         public async Task<IEnumerable<DeskDomainModel>> GetAll()
@@ -40,6 +65,7 @@ namespace KONTEHackaton.Domain.Services
                 model.Id = item.Id;
                 model.Order = item.Order;
                 model.isAvailable = item.isAvailable;
+                model.RoomId = item.RoomId;
                 result.Add(model);
             }
             return result;
@@ -54,6 +80,7 @@ namespace KONTEHackaton.Domain.Services
             result.Id = data.Id;
             result.Order = data.Order;
             result.isAvailable = data.isAvailable;
+            result.RoomId = data.RoomId;
             return result;
         }
     }

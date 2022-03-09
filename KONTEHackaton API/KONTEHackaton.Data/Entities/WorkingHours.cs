@@ -14,10 +14,10 @@ namespace KONTEHackaton.Data.Entities
         public int Id { get; set; }
 
         [Column("opens")]
-        public DateTime Opens { get; set; }
+        public TimeSpan Opens { get; set; }
 
         [Column("closes")]
-        public DateTime Closes { get; set; }
+        public TimeSpan Closes { get; set; }
 
         public ICollection<Faculty> Faculties { get; set; }
 

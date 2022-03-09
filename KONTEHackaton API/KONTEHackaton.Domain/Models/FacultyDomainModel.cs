@@ -13,7 +13,7 @@ namespace KONTEHackaton.Domain.Models
         
         public WorkingHoursDomainModel WorkingHours { get; set; }
 
-        public List<RoomDomainModel> RoomsList { get; set; }
+        public ICollection<RoomDomainModel> RoomsList { get; set; }
 
     }
 }
