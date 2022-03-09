@@ -30,7 +30,7 @@ namespace KONTEHackaton.Repositories
 
         public async Task<Faculty> GetById(Guid id)
         {
-            var data = await _facultyContext.Faculties.Include(x => x.Rooms).Include(x => x.WorkingHours).SingleOrDefaultAsync(x => x.Id == id);
+            var data = await _facultyContext.Faculties.Include(x => x.Rooms).ThenInclude(x => x.Desks).Include(x => x.WorkingHours).SingleOrDefaultAsync(x => x.Id == id);
             return data;
         }
 
