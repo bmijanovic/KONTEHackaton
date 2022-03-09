@@ -1,4 +1,5 @@
-﻿using KONTEHackaton.Domain.Interfaces;
+﻿using KONTEHackaton.Data.Entities;
+using KONTEHackaton.Domain.Interfaces;
 using KONTEHackaton.Domain.Models;
 using KONTEHackaton.Repositories;
 using System;
@@ -29,6 +30,18 @@ namespace KONTEHackaton.Domain.Services
                 model = new FacultyDomainModel();
                 model.Id = item.Id;
                 model.Name = item.Name;
+                model.WorkingHours = new WorkingHoursDomainModel();
+                model.WorkingHours.id = item.WorkingHours.Id;
+                model.WorkingHours.opens = item.WorkingHours.Opens;
+                model.WorkingHours.closes = item.WorkingHours.Closes; model.RoomsList = new List<RoomDomainModel>();
+                foreach (Room room in item.Rooms)
+                {
+                    RoomDomainModel roomModel = new RoomDomainModel();
+                    roomModel.Id = room.Id;
+                    roomModel.Name = room.Name;
+                    roomModel.FacultyID = room.FacultyId;
+                    model.RoomsList.Add(roomModel);
+                }
                 result.Add(model);
             }
             return result;
@@ -42,6 +55,19 @@ namespace KONTEHackaton.Domain.Services
             FacultyDomainModel result = new FacultyDomainModel();
             result.Id = data.Id;
             result.Name = data.Name;
+            result.WorkingHours = new WorkingHoursDomainModel();
+            result.WorkingHours.id = data.WorkingHours.Id;
+            result.WorkingHours.opens = data.WorkingHours.Opens;
+            result.WorkingHours.closes = data.WorkingHours.Closes;
+            result.RoomsList = new List<RoomDomainModel>();
+            foreach (Room room in data.Rooms)
+            {
+                RoomDomainModel roomModel = new RoomDomainModel();
+                roomModel.Id = room.Id;
+                roomModel.Name = room.Name;
+                roomModel.FacultyID = room.FacultyId;
+                result.RoomsList.Add(roomModel);
+            }
             return result;
         }
     }

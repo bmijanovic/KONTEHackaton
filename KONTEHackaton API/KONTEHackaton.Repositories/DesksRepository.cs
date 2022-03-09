@@ -14,8 +14,11 @@ namespace KONTEHackaton.Repositories
     {
         Desk Delete(Guid id);
         Desk Post(Desk entity);
-
         void Save();
+
+        Task<IEnumerable<Desk>> GetByRoomAsync(Guid roomId);
+
+        int GetNumOfTablesForRoom(Guid roomId);
     }
 
     public class DeskRepository : IDesksRepository
@@ -34,8 +37,20 @@ namespace KONTEHackaton.Repositories
             {
                 return null;
             }
-
             var result = _facultyContext.Desks.Remove(desk);
+            var query = from deskQuery in _facultyContext.Desks where desk.Order < deskQuery.Order && deskQuery.RoomId == desk.RoomId select deskQuery;
+            foreach (var d in query)
+            {
+                d.Order = d.Order - 1;
+            }
+            try
+            {
+                _facultyContext.SaveChanges();
+            }
+            catch (Exception e)
+            {
+                return null;
+            }
             return result.Entity;
         }
 
@@ -59,6 +74,28 @@ namespace KONTEHackaton.Repositories
         public void Save()
         {
             _facultyContext.SaveChanges();
+        }
+
+        public async Task<IEnumerable<Desk>> GetByRoomAsync(Guid roomId)
+        {
+            //IEnumerable<Desk> data = from desk in _facultyContext.Desks where desk.RoomId == roomId select desk;
+            //IEnumerable<Desk> data = (IEnumerable<Desk>)_facultyContext.Desks.Where(x => x.RoomId.Equals(roomId)).ToList();
+            IEnumerable<Desk> desks = _facultyContext.Desks.ToList();
+            IEnumerable<Desk> data = new List<Desk>();
+            foreach(Desk desk in desks)
+            {
+                if (desk.RoomId == roomId)
+                {
+                    data.Append(desk);
+                }
+            }
+            return data;
+        }
+
+        public int GetNumOfTablesForRoom(Guid roomId)
+        {
+            var data = _facultyContext.Desks.Where(x => x.RoomId.Equals(roomId)).ToList().Count;
+            return data;
         }
     }
 }

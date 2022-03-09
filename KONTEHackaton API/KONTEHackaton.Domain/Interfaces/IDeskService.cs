@@ -10,7 +10,8 @@ namespace KONTEHackaton.Domain.Interfaces
     public interface IDeskService : IService<DeskDomainModel>
     {
         DeskDomainModel Delete(Guid id);
-        DeskDomainModel Add(DeskDomainModel model);
+        DeskDomainModel Add(Guid roomId);
+
 
     }
 }

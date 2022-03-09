@@ -1,4 +1,5 @@
-﻿using System;
+﻿using KONTEHackaton.Data.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,7 +14,7 @@ namespace KONTEHackaton.Domain.Models
         
         public Guid FacultyID { get; set; }
 
-        public List<DeskDomainModel> DesksList { get; set; }
+        public ICollection<DeskDomainModel> DesksList { get; set; }
 
     }
 }

@@ -39,8 +39,10 @@ namespace KONTEHackaton.Data.Context
             //modelBuilder.Entity<Faculty>().HasOne(x => x.workingHours).WithMany(x => x.Faculties);
 
             modelBuilder.Entity<Room>().HasOne(x => x.Faculty).WithMany(x => x.Rooms).HasForeignKey(x => x.FacultyId).IsRequired();
+            modelBuilder.Entity<Faculty>().HasMany(x => x.Rooms).WithOne(x => x.Faculty).IsRequired();
 
             modelBuilder.Entity<Desk>().HasOne(x => x.Room).WithMany(x => x.Desks).HasForeignKey(x => x.RoomId).IsRequired();
+            modelBuilder.Entity<Room>().HasMany(x =>x.Desks).WithOne(x => x.Room).IsRequired();
 
         }
 

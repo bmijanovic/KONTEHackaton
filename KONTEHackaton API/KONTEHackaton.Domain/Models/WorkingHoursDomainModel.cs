@@ -9,8 +9,8 @@ namespace KONTEHackaton.Domain.Models
     public class WorkingHoursDomainModel
     {
         public int id  { get; set; }
-        public DateTime opens { get; set; }
-        public DateTime closes { get; set; }   
+        public TimeSpan opens { get; set; }
+        public TimeSpan closes { get; set; }   
 
     }
 }
